@@ -1,0 +1,250 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+
+:root {
+  --bg: #090909;
+}
+
+@import "tailwindcss";
+
+/* ===========================
+   GOOGLE FONT
+=========================== */
+
+/* ===========================
+   THEME
+=========================== */
+
+:root{
+  --bg:#090909;
+  --bg2:#131313;
+
+  --beige:#E8DDCF;
+  --cream:#FFF8F3;
+  --pink:#F8D7E5;
+  --rose:#D8A7B1;
+
+  --glass:rgba(255,255,255,.06);
+
+  --shadow:0 25px 60px rgba(0,0,0,.45);
+
+  --radius:28px;
+}
+
+/* ===========================
+   RESET
+=========================== */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+
+  font-family:Poppins,sans-serif;
+
+  background:var(--bg);
+
+  color:var(--cream);
+
+  overflow-x:hidden;
+
+}
+
+/* ===========================
+   SCROLLBAR
+=========================== */
+
+::-webkit-scrollbar{
+
+  width:8px;
+
+}
+
+::-webkit-scrollbar-track{
+
+  background:#111;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+  background:var(--pink);
+
+  border-radius:20px;
+
+}
+
+/* ===========================
+   GLASS
+=========================== */
+
+.glass{
+
+  background:var(--glass);
+
+  backdrop-filter:blur(18px);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  box-shadow:var(--shadow);
+
+}
+
+/* ===========================
+   BUTTON
+=========================== */
+
+.primary-btn{
+
+  background:var(--pink);
+
+  color:black;
+
+  padding:18px 40px;
+
+  border:none;
+
+  border-radius:999px;
+
+  cursor:pointer;
+
+  font-size:18px;
+
+  font-weight:700;
+
+  transition:.35s;
+
+}
+
+.primary-btn:hover{
+
+  transform:translateY(-4px);
+
+  box-shadow:0 0 35px rgba(248,215,229,.45);
+
+}
+
+/* ===========================
+   CARDS
+=========================== */
+
+.card{
+
+  border-radius:30px;
+
+  padding:35px;
+
+}
+
+/* ===========================
+   BACKGROUND BLOBS
+=========================== */
+
+.blob{
+
+  position:absolute;
+
+  border-radius:50%;
+
+  filter:blur(150px);
+
+  animation:float 10s ease-in-out infinite;
+
+}
+
+.blob1{
+
+  width:650px;
+
+  height:650px;
+
+  background:#f8d7e533;
+
+  top:-200px;
+
+  left:-200px;
+
+}
+
+.blob2{
+
+  width:600px;
+
+  height:600px;
+
+  background:#e8ddcf22;
+
+  right:-150px;
+
+  bottom:-150px;
+
+}
+
+/* ===========================
+   FLOAT
+=========================== */
+
+@keyframes float{
+
+0%,100%{
+
+transform:translateY(0px);
+
+}
+
+50%{
+
+transform:translateY(-40px);
+
+}
+
+}
+
+/* ===========================
+   HEARTS
+=========================== */
+
+.heart{
+
+position:absolute;
+
+font-size:22px;
+
+opacity:.25;
+
+animation:heartFloat linear infinite;
+
+}
+
+@keyframes heartFloat{
+
+0%{
+
+transform:translateY(100vh);
+
+opacity:0;
+
+}
+
+20%{
+
+opacity:.25;
+
+}
+
+100%{
+
+transform:translateY(-120vh);
+
+opacity:0;
+
+}
+
+}
