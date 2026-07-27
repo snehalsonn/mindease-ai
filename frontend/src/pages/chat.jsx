@@ -186,7 +186,7 @@ export default function Chat() {
 
       const response = await axios.post(
 
-        "http://127.0.0.1:8000/chat",
+        "https://mindease-ai-u6k5.onrender.com",
 
         {
           message:text
