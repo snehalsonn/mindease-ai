@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { SendHorizontal, Smile, Paperclip } from "lucide-react";
 
-import dragdropzone from "./dragdropzone";
-import imagepreview from "./imagepreview";
-import emojipickercomponent from "./emojipickercomponent";
-import voicerecorder from "./voicerecorder";
+import DragDropzone from "./dragdropzone";
+import ImagePreview from "./imagepreview";
+import EmojiPickerComponent from "./emojipickercomponent";
+import VoiceRecorder from "./voicerecorder";
 
 export default function ChatInput({ onSend }) {
 

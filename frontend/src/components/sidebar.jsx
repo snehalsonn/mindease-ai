@@ -10,8 +10,7 @@ import {
 } from "lucide-react";
 
 import { useState } from "react";
-import themetoggle from "./themetoggle";
-
+import ThemeToggle from "./themetoggle";
 
 export default function Sidebar({
   onSettings,
