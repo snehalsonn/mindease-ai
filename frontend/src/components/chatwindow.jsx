@@ -3,8 +3,6 @@ import { useEffect, useRef } from "react";
 import AIAvatar from "./AIavatar";
 import ChatBubble from "./chatbubble";
 import TypingIndicator from "./typingindicator";
-
-
 export default function ChatWindow({ messages, thinking }) {
 
 
