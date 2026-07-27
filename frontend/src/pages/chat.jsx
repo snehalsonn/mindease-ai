@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-import Sidebar from "../components/sidebar";
-import CursorGlow from "../components/cursorglow";
-import FloatingPetals from "../components/floatingpetals";
-import ChatWindow from "../components/chatwindow";
-import ChatInput from "../components/chatinput";
-import SettingsModal from "../components/settingmodal";
+import sidebar from "../components/sidebar";
+import cursorGlow from "../components/cursorglow";
+import floatingPetals from "../components/floatingpetals";
+import chatwindow from "../components/chatwindow";
+import chatinput from "../components/chatinput";
+import settingsmodal from "../components/settingmodal";
 
 
 export default function Chat() {
