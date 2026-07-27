@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
 
-import AIAvatar from "./AIAvatar";
-import ChatBubble from "./ChatBubble";
-import TypingIndicator from "./TypingIndicator";
+import AIavatar from "./AIavatar";
+import chatbubble from "./chatbubble";
+import typingIndicator from "./typingIndicator";
 
 export default function ChatWindow({ messages, thinking }) {
 
