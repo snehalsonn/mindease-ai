@@ -19,16 +19,18 @@ export default function ChatWindow({ messages, thinking }) {
   }, [messages, thinking]);
 
 
+
   return (
 
     <div className="flex-1 overflow-y-auto p-8 space-y-6">
+
 
       <AIAvatar
         state={thinking ? "thinking" : "idle"}
       />
 
 
-      {messages.map((msg,index)=>(
+      {messages.map((msg, index) => (
 
         <ChatBubble
           key={index}
@@ -39,14 +41,20 @@ export default function ChatWindow({ messages, thinking }) {
       ))}
 
 
+
       {thinking && (
+
         <TypingIndicator />
+
       )}
 
 
-      <div ref={bottomRef}/>
+
+      <div ref={bottomRef} />
+
 
     </div>
 
   );
+
 }
