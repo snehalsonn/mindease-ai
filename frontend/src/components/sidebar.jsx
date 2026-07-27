@@ -11,7 +11,6 @@ import {
 
 import { useState } from "react";
 import ThemeToggle from "./themetoggle";
-
 export default function Sidebar({
   onSettings,
   onNewChat,
