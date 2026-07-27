@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 import Sidebar from "../components/sidebar";
-import CursorGlow from "../components/CursorGlow";
-import FloatingPetals from "../components/FloatingPetals";
+import CursorGlow from "../components/cursorglow";
+import FloatingPetals from "../components/floatingpetals";
 import ChatWindow from "../components/chatwindow";
 import ChatInput from "../components/chatinput";
-import SettingsModal from "../components/settingModal";
+import SettingsModal from "../components/settingmodal";
 
 
 export default function Chat() {
@@ -24,7 +24,6 @@ export default function Chat() {
   ];
 
 
-
   const [messages, setMessages] = useState(defaultMessage);
 
   const [chats, setChats] = useState([]);
@@ -36,40 +35,18 @@ export default function Chat() {
   const [settingsOpen, setSettingsOpen] = useState(false);
 
 
-  const deleteChat = (id)=>{
-
-  setChats(prev =>
-    prev.filter(chat => chat.id !== id)
-  );
-
-
-  if(activeChat === id){
-
-    setActiveChat(null);
-
-    setMessages(defaultMessage);
-
-  }
-
-};
-
-
-  // Load saved chats
 
   useEffect(() => {
 
     const savedChats = localStorage.getItem("mindease-chats");
 
-    if(savedChats){
+    if (savedChats) {
       setChats(JSON.parse(savedChats));
     }
 
   }, []);
 
 
-
-
-  // Save chats
 
   useEffect(() => {
 
@@ -83,11 +60,7 @@ export default function Chat() {
 
 
 
-
-  // Create new chat
-
   const createNewChat = () => {
-
 
     const newChat = {
 
@@ -100,7 +73,6 @@ export default function Chat() {
       messages: defaultMessage
 
     };
-
 
 
     setChats(prev => [
@@ -118,18 +90,14 @@ export default function Chat() {
 
 
 
-
-  // Select old chat
-
-  const selectChat = (id)=>{
-
+  const selectChat = (id) => {
 
     const chat = chats.find(
       c => c.id === id
     );
 
 
-    if(chat){
+    if (chat) {
 
       setActiveChat(id);
 
@@ -142,27 +110,47 @@ export default function Chat() {
 
 
 
+  const deleteChat = (id) => {
+
+    setChats(prev =>
+      prev.filter(chat => chat.id !== id)
+    );
 
 
-  // Send message to AI
+    if (activeChat === id) {
 
-  const sendMessage = async(text)=>{
+      setActiveChat(null);
+
+      setMessages(defaultMessage);
+
+    }
+
+  };
 
 
-    if(!text.trim()) return;
+
+
+
+  const sendMessage = async (text) => {
+
+
+    if (!text.trim()) return;
 
 
 
     const userMessage = {
 
-      sender:"user",
+      sender: "user",
 
       text,
 
-      time:new Date().toLocaleTimeString([],{
-        hour:"2-digit",
-        minute:"2-digit"
-      })
+      time: new Date().toLocaleTimeString([], {
+
+        hour: "2-digit",
+
+        minute: "2-digit",
+
+      }),
 
     };
 
@@ -174,22 +162,23 @@ export default function Chat() {
     ];
 
 
-    setMessages(updatedMessages);
 
+    setMessages(updatedMessages);
 
     setThinking(true);
 
 
 
-    try{
+
+    try {
 
 
       const response = await axios.post(
 
-        "https://mindease-ai-u6k5.onrender.com",
+        "https://mindease-ai-u6k5.onrender.com/chat",
 
         {
-          message:text
+          message: text
         }
 
       );
@@ -198,22 +187,28 @@ export default function Chat() {
 
       const botMessage = {
 
-        sender:"bot",
+        sender: "bot",
 
-        text:response.data.response,
+        text: response.data.response,
 
-        time:new Date().toLocaleTimeString([],{
-          hour:"2-digit",
-          minute:"2-digit"
-        })
+        time: new Date().toLocaleTimeString([], {
+
+          hour: "2-digit",
+
+          minute: "2-digit",
+
+        }),
 
       };
 
 
 
       const finalMessages = [
+
         ...updatedMessages,
+
         botMessage
+
       ];
 
 
@@ -222,43 +217,63 @@ export default function Chat() {
 
 
 
-      // update current chat
+      if (activeChat) {
 
-      if(activeChat){
 
         setChats(prev =>
+
           prev.map(chat =>
+
             chat.id === activeChat
-              ? {
-                  ...chat,
-                  messages:finalMessages,
-                  title:text.slice(0,20)
-                }
-              : chat
+
+            ? {
+
+                ...chat,
+
+                messages: finalMessages,
+
+                title: text.slice(0,20)
+
+              }
+
+            : chat
+
           )
+
         );
+
 
       }
 
 
 
-    }
-    catch(error){
+    } catch(error) {
 
 
       console.log(error);
 
 
-      setMessages(prev=>[
+
+      setMessages(prev => [
+
         ...prev,
+
         {
+
           sender:"bot",
+
           text:"⚠️ Sorry, I couldn't connect to my AI brain.",
+
           time:new Date().toLocaleTimeString([],{
+
             hour:"2-digit",
-            minute:"2-digit"
-          })
+
+            minute:"2-digit",
+
+          }),
+
         }
+
       ]);
 
     }
@@ -277,8 +292,8 @@ export default function Chat() {
   return (
 
     <div className="
-    relative h-screen flex overflow-hidden
-    bg-[#090909] text-white
+      relative h-screen flex overflow-hidden
+      bg-[#090909] text-white
     ">
 
 
@@ -289,26 +304,32 @@ export default function Chat() {
 
 
       <Sidebar
-  onSettings={() => setSettingsOpen(true)}
-  onNewChat={createNewChat}
-  chats={chats}
-  onSelectChat={selectChat}
-  onDeleteChat={deleteChat}
-/>
+
+        onSettings={() => setSettingsOpen(true)}
+
+        onNewChat={createNewChat}
+
+        chats={chats}
+
+        onSelectChat={selectChat}
+
+        onDeleteChat={deleteChat}
+
+      />
 
 
 
 
       <div className="
-      relative z-10 flex flex-1 flex-col
+        relative z-10 flex flex-1 flex-col
       ">
 
 
 
         <header className="
-        h-20 border-b border-white/10
-        backdrop-blur-xl bg-black/20
-        flex items-center px-8
+          h-20 border-b border-white/10
+          backdrop-blur-xl bg-black/20
+          flex items-center px-8
         ">
 
 
@@ -367,11 +388,11 @@ export default function Chat() {
       {settingsOpen && (
 
         <div className="
-        absolute inset-0
-        bg-black/50
-        backdrop-blur-sm
-        flex items-center justify-center
-        z-50
+          absolute inset-0
+          bg-black/50
+          backdrop-blur-sm
+          flex items-center justify-center
+          z-50
         ">
 
 

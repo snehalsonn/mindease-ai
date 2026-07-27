@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
 import Landing from "./pages/Landing";
-import Chat from "./pages/Chat";
+import Chat from "./pages/chat";
 
 export default function App() {
   return (
