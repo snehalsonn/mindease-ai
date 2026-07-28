@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-import AIAvatar from "./AIavatar";
+import AIAvatar from "./AIAvatar";
 import ChatBubble from "./chatbubble";
 import TypingIndicator from "./typingindicator";
 

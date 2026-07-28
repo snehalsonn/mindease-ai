@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import AIAvatar from "./AIavatar";
+import AIAvatar from "./AIAvatar";
 
 export default function TypingIndicator() {
   return (
